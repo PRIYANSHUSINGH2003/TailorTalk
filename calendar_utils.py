@@ -1,10 +1,17 @@
+import os
 import datetime
 from typing import List, Dict, Any
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-# Path to your service account key file (update this path)
+# Path to your service account key file (update this path if needed)
 SERVICE_ACCOUNT_FILE = 'elite-nuance-464806-e1-94722a41ac98.json'
+
+# For cloud deployment: reconstruct the file from environment variable if needed
+if os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON") and not os.path.exists(SERVICE_ACCOUNT_FILE):
+    with open(SERVICE_ACCOUNT_FILE, "w") as f:
+        f.write(os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON"))
+
 # The calendar ID to use (can be 'primary' or a specific calendar ID)
 CALENDAR_ID = 'primary'  # Replace with your calendar ID if needed
 
@@ -48,6 +55,7 @@ def create_event(service, summary: str, start_time: str, end_time: str, descript
     return created_event
 
 # INSTRUCTIONS:
-# 1. Download your Google Service Account JSON key and place it in the project directory as 'service_account.json'.
+# 1. Download your Google Service Account JSON key and place it in the project directory as 'elite-nuance-464806-e1-94722a41ac98.json'.
+#    (Or use the environment variable method for cloud deployment.)
 # 2. Share your Google Calendar with the service account email (found in the JSON key file).
 # 3. Update CALENDAR_ID if you want to use a non-primary calendar.
