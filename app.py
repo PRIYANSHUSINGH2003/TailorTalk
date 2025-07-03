@@ -105,7 +105,7 @@ with st.sidebar:
     st.caption("Made with Streamlit · Powered by FastAPI & Langchain")
 
 # Backend API URL (adjust if running elsewhere)
-API_URL = "http://localhost:8000/chat"
+API_URL = "https://tailortalk-backend-i74p.onrender.com/chat"
 
 # Session state for chat history and session ID
 if "messages" not in st.session_state:
