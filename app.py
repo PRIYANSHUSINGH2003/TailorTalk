@@ -105,7 +105,7 @@ with st.sidebar:
     st.caption("Made with Streamlit · Powered by FastAPI & Langchain")
 
 # Backend API URL (adjust if running elsewhere)
-API_URL = "https://tailortalk-backend-i74p.onrender.com/chat"
+API_URL = "http://localhost:8000/chat"
 
 # Session state for chat history and session ID
 if "messages" not in st.session_state:
@@ -173,7 +173,7 @@ for msg in st.session_state["messages"]:
             st.markdown(msg["content"])
 
 # Footer
-st.markdown('<div class="footer">&copy; 2024 Google Calendar Booking Agent &mdash; Built by Ankit VERMA</div>', unsafe_allow_html=True)
+st.markdown('<div class="footer">&copy; 2024 Google Calendar Booking Agent &mdash; Built by Priyanshu Singh</div>', unsafe_allow_html=True)
 
 # User input (modern chat input)
 user_input = st.chat_input("Type your message and press Enter...")
